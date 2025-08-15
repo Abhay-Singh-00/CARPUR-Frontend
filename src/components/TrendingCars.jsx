@@ -28,7 +28,7 @@ function TrendingCars() {
   useEffect(() => {
     async function fetchCars() {
       try {
-        const res = await fetch("http://localhost:5000/trending-cars");
+        const res = await fetch("https://carpur.onrender.com/");
         const data = await res.json();
 
         const carList = Array.isArray(data.data) ? data.data : [];
