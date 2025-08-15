@@ -103,7 +103,7 @@ function App() {
   };
 
   return (
-    <Router basename="/CARPUR">
+    <Router basename="/">
       <div className=" p-4 dark:bg-gray-900 dark:text-white min-h-screen">
         <nav className="fixed top-0 left-0 w-full z-500 flex flex-col lg:flex-row lg:justify-between items-center gap-4 py-4 px-6 mb-6 shadow-md bg-white dark:bg-gray-800 text-black dark:text-white rounded-xl">
           <div className="climate-crisis text-4xl font-bold text-blue-600 dark:text-blue-400">
