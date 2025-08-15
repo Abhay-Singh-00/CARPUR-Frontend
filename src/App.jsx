@@ -5,6 +5,7 @@ import SearchBar from './components/SearchBar';
 import Wishlist from './components/Wishlist';
 import DarkModeToggle from './components/DarkModeToggle';
 import { fetchCars } from './services/api';
+import TrendingCars from './components/TrendingCars';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import CarDetail from './components/carDetail';
 
@@ -24,6 +25,8 @@ function App() {
   const [sort, setSort] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const carsPerPage = 10;
+
+  const [isFilterCollapsed, setIsFilterCollapsed] = useState(false);
 
   useEffect(() => {
     const savedWishlist = localStorage.getItem('wishlist');
@@ -100,20 +103,20 @@ function App() {
   };
 
   return (
-    <Router basename="/car-finder">
-      <div className="p-4 dark:bg-gray-900 dark:text-white min-h-screen">
-        <nav className="flex flex-col lg:flex-row lg:justify-between items-center gap-4 py-4 px-6 mb-6 shadow-md bg-white dark:bg-gray-800 text-black dark:text-white rounded-xl">
-          <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-            <Link to="/">Car Finder</Link>
+    <Router basename="/CARPUR">
+      <div className=" p-4 dark:bg-gray-900 dark:text-white min-h-screen">
+        <nav className="fixed top-0 left-0 w-full z-500 flex flex-col lg:flex-row lg:justify-between items-center gap-4 py-4 px-6 mb-6 shadow-md bg-white dark:bg-gray-800 text-black dark:text-white rounded-xl">
+          <div className="climate-crisis text-4xl font-bold text-blue-600 dark:text-blue-400">
+            <Link to="/">CARPUR</Link>
           </div>
-
+           
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto lg:ml-auto">
-            <div className="w-full sm:w-64">
+            <div className="w-full sm:w-84">
               <SearchBar setFilters={setFilters} />
             </div>
             <Link
               to="/wishlist"
-              className="px-4 py-2 rounded bg-blue-500 hover:bg-blue-600 text-white transition duration-300"
+              className="text-lg font-bold text-gray-900 dark:text-white hover:scale-105 hover:text-blue-600 transition duration-300"
             >
               Wishlist
             </Link>
@@ -121,12 +124,18 @@ function App() {
           </div>
         </nav>
 
-        {/* Routes */}
+        <TrendingCars/>
         <Routes>
           <Route path="/" element={
             <>
               <div className="flex flex-col lg:flex-row gap-4">
-                <FilterPanel filters={filters} setFilters={setFilters} setSort={setSort} />
+                <FilterPanel
+                  filters={filters}
+                  setFilters={setFilters}
+                  setSort={setSort}
+                  collapsed={isFilterCollapsed}
+                  toggleCollapsed={() => setIsFilterCollapsed(!isFilterCollapsed)}
+                />
                 <div className="flex-1">
                   {loading ? (
                     <p>Loading...</p>

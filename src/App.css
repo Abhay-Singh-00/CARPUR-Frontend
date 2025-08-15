@@ -1,1 +1,6 @@
-@import "tailwindcss";
+/* index.css */
+@import url('https://fonts.googleapis.com/css2?family=Edu+AU+VIC+WA+NT+Pre:wght@400..700&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lobster&family=Orbitron:wght@400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

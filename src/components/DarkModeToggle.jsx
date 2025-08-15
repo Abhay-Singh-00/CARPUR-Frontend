@@ -15,8 +15,8 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <button onClick={toggleTheme} className="px-4 py-2 border rounded">
-      {theme === 'light' ? '🌙 Dark Mode' : '☀️ Light Mode'}
+    <button onClick={toggleTheme} className="w-15 h-15 items-center justify-center bprder rounded-full">
+      {theme === 'light' ? '🌙' : '☀️'}
     </button>
   );
 };
